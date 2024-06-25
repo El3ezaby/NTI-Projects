@@ -1,0 +1,205 @@
+/*
+ * main.c
+ *
+ *  Created on: ??‏/??‏/????
+ *      Author: Mohamed
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include<stdint.h>
+#include <stdbool.h>
+#include <conio.h>	
+#include <math.h>
+#include<string.h>
+#define Pi 22/7
+void Exercise(float * square , float* root ,  float *cube,float x );
+static void Arraymanupilation(int* Max , int *min ,float *avg , int a[] ,int size);
+void Stop(void);
+void HalfSpeed(void);
+void FullSpeed(void);
+void State( void (* func)(void));
+int add(int x ,int y);
+int mul( int x , int y );
+int Division( int x , int y );
+int sub(int x , int y );
+void Circle(float *Area, float * Circumferance, float radious);
+void Arr_Neg_ones(int *arr ,int size ,int * ones ,int* neg  );
+void print2D(int( *ptr)[3] ,int raw , int columnn ,int*max, int* min ,float *avg);
+int Length(char * string);
+void main(void )
+{
+	system("cls");
+    /**************************************** Exercise ************************************************/
+    // float square=0 , root=0 ,cube=0 ,x =4.0;
+    // Exercise(&square,&root,&cube,x);
+    // printf("Square = %f     , cube= %f     , root = %f ", square,cube,root);
+    /**************************************** Circle ***************************************************/
+    // float Area=0.0;
+    // float circumferance=0.0;
+    // float radious=0.0;
+    // printf("Please Enter The radious \n\r");
+    // scanf("%f",&radious);
+    // Circle(&Area,&circumferance,radious);
+    // printf("radious = %f .... Area= %f ..... Circumferance = %f \n\r",radious,Area,circumferance);
+    /************************************* Arraymanupilation ******************************************/
+    // int arr[4]={1,2,3,4};
+    // int max=arr[0] , min =arr[0] ;
+    // float avg=0.0;
+    // Arraymanupilation(&max,&min,&avg,arr,4);
+    // printf("Max=%d ... Min=%d... avg=%f\n\r ",max,min,avg);
+    /**************************************** Assignment 1 ********************************************/
+    // int count=0;
+    // void (*arr[3])()={HalfSpeed,Stop,FullSpeed};
+    // while (getch()=='c')
+    // {
+    //     // switch (count)
+    //     // {
+    //     // case case 2:
+    //     //     State(FullSpeed);
+    //     //     count=(count+1)%4;
+    //     //     break;
+    //     // case 3:
+    //     //     State(Stop);
+    //     //     count=(count+1)%4;
+    //     //     break;
+    //     // default:
+    //     //     break;
+    //     // }0:
+    //     //     State(HalfSpeed);
+    //     //     count=(count+1)%4;
+    //     //     break;
+    //     // case 1:
+    //     //     State(Stop);
+    //     //     count=(count+1)%4;
+    //     //     break;
+    //     // 
+    //     arr[count]();
+    //     count=(count+1)%3;
+    // }
+    /***********************************Add,sub,Div, Mul pointer function*****************************/
+    // int(*P[4])(int ,int )={add,mul,sub,Division};
+    // printf("add = %d \n\r",P[0](8,4));
+    // printf("mul = %d \n\r",P[1](8,4));
+    // printf("sub = %d \n\r",P[2](8,4));
+    // printf("Div = %d \n\r",P[3](8,4));
+    /*****************************************void Arr_Neg_ones***************************************/
+    // int ones=0 , negative=0;
+    // int arr[10]={1,2,3,1,5,-50,1,-30,1,-40};
+    // Arr_Neg_ones(arr,10,&ones,&negative);
+    // printf("number of ones is : %d ...... numer of zeroes is : %d \n\r",ones,negative);
+    /*****************************************2D array print, Max, Min, Avg******************************************/
+    // int arr[2][3]={{1,2,3},{4,5,6}};
+    // int max=0,min=0;
+    // float avg=0.0;
+    // print2D(arr,2,3,&max,&min,&avg);
+    /********************************************String Length*****************/
+    printf("Length of this string is : %d",Length("Hello NTI\n"));
+     return;
+}
+int  add(int x ,int y)
+{
+    return x+y;
+
+}
+int mul( int x , int y )
+{
+    return x*y;
+}
+int sub(int x , int y )
+{
+    return x-y;
+}
+int Division( int x , int y )
+{
+    if (y !=0)
+        return x/y;
+}
+void Exercise(float * square , float* root ,  float *cube,float x )
+{
+    *square=pow(x,2);
+    *cube=pow(x,3);
+    *root=sqrt(x);
+}
+void Circle(float *Area, float * Circumferance, float radious)
+{
+    *Area= Pi*pow(radious,2);
+    *Circumferance=2*Pi*radious;
+}
+void Arraymanupilation(int* Max , int* min ,float* avg , int a[] ,int size)
+{
+    float sum=0;
+    for (int i = 0; i < size; i++)
+    {
+        if (*Max<a[i])
+            *Max=a[i];
+        if (*min>a[i])
+            *min=a[i];
+        sum+=a[i];
+    }
+    *avg=sum/size;
+}
+// pointer to a function that returns int and  takes two argument of pointer arry of two integers and pointer function with no parameters to int
+/********************************************* Assignment 1 ******************************************/
+void HalfSpeed(void)
+{
+    printf("HAL_GPIO_Write(GPIOA,GPIO_PIN_5,128); \n");
+}
+void FullSpeed(void)
+{
+    printf("HAL_GPIO_Write(GPIOA,GPIO_PIN_5,255); \n");
+}
+void Stop(void)
+{
+    printf("HAL_GPIO_Write(GPIOA,GPIO_PIN_5,0); \n");
+}
+void State( void (* func)(void))
+{
+    func();
+}
+/********************************************* Assignment 2******************************************/
+void Arr_Neg_ones(int *arr ,int size ,int * ones ,int* neg  )
+{
+    for (int i = 0; i < size; i++)
+    {
+       if(arr[i]==1)
+            *ones=*ones+1;
+        if(arr[i]<0)
+            *neg=*neg+1;
+    } 
+}
+/*************************************** Labs week4 L2 *****************/
+// pointer function that returns integer and takes 1-pointer arry of two integers 2- pointer function with no parameters to int
+/*************************************** Labs week4 L3 ******************************************/
+void print2D(int (*ptr)[3] ,int raw , int columnn ,int*max, int* min ,float *avg)
+{
+    *max=ptr[0][0];
+    *min=ptr[0][0];
+    *avg=0.0;
+    float sum=0.0;
+    for (int i = 0; i < raw; i++)
+    {
+        for (int j = 0; j < columnn; j++)
+        {
+            printf("arr[%d][%d]= %d \n\r",i,j,ptr[i][j]);
+            if(*max<ptr[i][j])
+                *max=ptr[i][j];
+            if(*min>ptr[i][j])
+                *min=ptr[i][j];
+            sum+=ptr[i][j];
+        }
+        *avg=sum/(raw*columnn);
+    }
+    printf("Max = %d ..... Min=%d  ... avg=%f \n\r",*max,*min,*avg);
+}
+int Length(char * string)
+{
+    int count=0;
+    char val=*string;
+    while (val !='\n')
+    {
+        count++;
+        val=*(string+count);
+        printf("%d\n",count);
+    }
+    return count;    
+}
