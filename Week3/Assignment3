@@ -1,0 +1,133 @@
+/*
+ * main.c
+ *
+ *  Created on: ??‏/??‏/????
+ *      Author: Mohamed
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include<stdint.h>
+#include <stdbool.h>
+#include <conio.h>	
+#include <math.h>
+bool Perfectnumber(void);
+void Armstrong( int num);
+void ArmstronRange(int x,int y);
+void Doublicate(int a[], int size);
+bool exist(int arr[], int size,int temp );
+void main(void )
+{
+
+	system("cls");
+    /******************************** Perfect number *****************************/
+    // Perfectnumber();
+    // /******************************** Arm strong *****************************  ***/
+    // int num = 153;
+    // Armstrong(num);
+    // /********************************* Arm strong Range *************************/
+    // ArmstronRange(150,160);
+    /********************* # of doublicate elements in an array *****************/
+    int a[10]={5,6,7,8,5,6,7,8,5,6};
+    Doublicate(a,10);
+	return ;
+}
+bool Perfectnumber(void)
+{
+    int x =0;
+    int sum=0 ;
+    printf("Please Enter a number \n\r ");
+    scanf("%d",&x);
+    for (int i = 1; i < x; i++)
+    {
+        if (x%i==0)
+        {
+            sum+=i;
+            //printf("i= %d\n\r",i);
+        }
+            
+    }
+    if (sum==x)
+
+    {
+        printf("%d is a paerfect number \n\r ");
+        return(true);
+    }
+    else
+    
+    {
+        printf("%d isn't a paerfect number \n\r ");
+        return(false);
+    }
+}
+void Armstrong( int num)
+{
+    int var=0 ,sum=0,rem=0 ,a=0;
+    var=num;
+    while (var !=0)          // Finding number of diggits in a given number 
+    {
+        var/=10;
+        a++;
+    }
+    var=num;
+    while (var>0)
+    {
+        rem=var%10;
+        sum+=pow(rem,a);
+        var/=10;
+    }
+    if (sum==num)   
+        printf("%d is an arm strong number \n\r ",num);
+    else
+        printf("%d isn't an arm strong number \n\r ",num);
+}
+void ArmstronRange(int x,int y)
+{
+    for (x; x < y; x++)
+    {
+        Armstrong(x);
+    }
+    
+}
+void Doublicate(int a[], int size)
+{
+    int arr[10]={0};           //   array to hold repeated value 
+    int Count_arr[10]={0};     //   array to hold repeated values
+    int temp=0;
+    int count=0;
+    int sumcount=0;
+    int repeat=0;
+    for (int j = 0; j < size; j++)
+    {
+        temp= a[j];
+        if( !exist(arr,10,temp))
+        {
+            repeat++;
+            arr[j]=a[j];
+            for (int i = 0; i < size; i++)
+            {
+                if (temp==a[i])
+                    count++;
+            }
+            Count_arr[j]=count;
+            sumcount+=count;
+            count=0;
+        }
+    }
+    /********************* Printing all repeated items in array and their count***************/
+    for (int i = 0; i < repeat; i++)
+    {
+        printf("number %d exists  %d times \n\r",arr[i] , Count_arr[i]);
+    }
+    
+    printf("number of doublicate elements is : %d\n\r",sumcount);
+}
+bool exist(int arr[], int size,int temp )
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (temp==arr[i])
+            return(true);
+    }
+    return false;
+    
+}
