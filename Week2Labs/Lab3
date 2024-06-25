@@ -1,0 +1,285 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+static void SwitchCalcuator(void);
+static void Multipleof_3_or_7(void);
+static void Neerestto100(void);
+static void Absolute_n_51(void);
+static void Sum_TripleSum(void);
+static void GradesExample(void);
+
+static void IDExample(void);
+static void GrossSalary(void);
+static void ISPositiveorNegative(void);
+static void GetDay(void);
+void main(void )
+{
+    /*************************** Grades Example *****************************************************/
+    GradesExample();
+    /************************** sum or triple sum of two numers in case equal **********************/
+    Sum_TripleSum();
+    /************************** Absolute between n and 51 *****************************************/
+    Absolute_n_51();
+    /************************** Check if a number is multiple of 7 or 3 **************************/
+    Multipleof_3_or_7();
+    /************************** Calculate neerest # to 100 of two numbers ***********************/
+    Neerestto100();
+    /*****************************************Calculator with switch****************************/
+    SwitchCalcuator();
+    /****************************** ID Example *************************************************/
+    IDExample();    
+    /******************************calculating Gross salary Example ****************************/
+    GrossSalary();
+    /******************************positive or negative with switch****************************/
+    ISPositiveorNegative();
+    /******************************what day is today Example**********************************/
+    GetDay();
+	return ;
+
+}
+
+void SwitchCalcuator(void)
+{
+    int x=0,y=0;
+	char ch=' ';
+	printf("Please Enter an Arithmatic operation   \n\r");
+	scanf("%d%c%d",&x,&ch,&y);
+	switch (ch)
+	{
+	case '+':
+		printf("X+Y= %d\n\r",x+y);
+		break;
+	case '-':
+		printf("X-Y= %d\n\r",x-y);
+		break;
+	case '*':
+		printf("X*Y= %d\n\r",x*y);
+		break;
+	case '/':
+		printf("X/Y= %d\n\r",x/y);
+		break;
+	case '%':
+		printf("X%Y= %d\n\r",x%y);
+		break;
+		
+	default:
+		printf("Wrong operation \n\r");
+		break;
+	}
+}
+void Neerestto100(void)
+{
+	int g=0,l=0;
+	int dist1=0;
+	int dist2=0;
+	printf("Please Enter first number   \n\r");
+	scanf("%d",&g);
+
+	printf("Please Enter second number   \n\r");
+	scanf("%d",&l);
+	dist1=100-g;
+	dist2=100-l;
+
+	dist1=(dist1<0)?dist1*-1:dist1;
+	dist2=(dist2<0)?dist2*-1:dist2;
+
+
+	if (dist1==dist2 )
+		printf("Both numbers are equal and have same nearest value   \n\r");
+	else if (dist1<dist2)
+		printf(" Number %d is neerer to 100 than %d",g,l);
+	else 
+		printf(" Number %d is neerer to 100 than %d",l,g);
+}
+void Multipleof_3_or_7(void)
+{
+	int k=0;
+    printf("Please Enter a number   \n\r");
+	scanf("%d",&k);
+
+	if (k%3==0 && k%7==0)
+		printf("number %d is multiple of 3 and 7 \n\r",k);
+	else if(k%3==0)
+		printf("number %d is multiple of 3 ",k);
+	else if(k%7==0)
+		printf("number %d is multiple of 7 ",k);
+	else
+	    printf(" this number is neither multiple of 7 nor 3");
+}
+void Absolute_n_51(void)
+{
+    int n=0,abs=0;
+    printf("Please Enter a number   \n\r");
+	scanf("%d",&n);
+	if (n>51)
+	{
+		abs=n-51;
+		printf("abs diff between %d and 51 is %d , the triple of abs is %d \n\r",n,abs,abs*3);
+	}
+	else 
+	{
+		abs =51-n;
+		printf ("abs diff of %d and 51 is %d \n\r",n,abs);
+	}
+}
+void Sum_TripleSum(void)
+{
+    int x=0,y=0,z=0;
+	 printf("Please Enter first number   \n\r");
+	scanf("%d",&x);
+
+	 printf("Please Enter second number   \n\r");
+	scanf("%d",&y);
+
+	if (x==y)
+		printf ("triple sume %d\n\r",(x*3));
+	else 
+		printf ("sume of two numers is  %d\n\r",(x+y));
+}
+void GradesExample(void)
+{
+    int x;
+	printf("Please Enter the grade  \n\r");
+	lll:scanf("%d",&x);
+
+	if (x<50 && x>=0)
+	{
+		printf ("fail \n\r");
+	}
+	else if (x>=50 && x<65) 
+	{
+		printf ("pass \n\r");
+	}
+	else if (x>=65 && x<75) 
+	{
+		printf ("GOOD \n\r");
+	}
+		else if (x>=75 && x<85) 
+	{
+		printf ("very GOOD \n\r");
+	}
+		else if (x>=85 && x<=100) 
+	{
+		printf ("Excellent \n\r");
+	}
+	else 
+	{
+		printf ("please enter a valid degree \n\r");
+		goto lll;
+	}
+}
+void IDExample(void)
+{
+    int ID=0;
+    printf("Please Enter your ID \n\r");
+    scanf("%d",&ID);
+    switch (ID)
+    {
+    case 1234:
+        printf(" Hello Mr Amr \n\r");
+        break;
+    case 5678:
+        printf(" Hello Mss Maha \n\r");
+        break;
+    case 9101:
+        printf(" Hello Mr Ahmed \n\r");
+        break;
+    default:
+        printf(" Wrong Input \n\r");
+        break;
+    }
+}
+void GrossSalary(void)
+{
+    float BasicSalry=0.0;
+    char status=' ';
+    LL:printf("Please Enter your Basic Salary \t ... this value should be greater than 0\n\r");
+    scanf("%f",&BasicSalry);
+    if (BasicSalry<=0)
+    {
+        printf("Wrong input for Basic sallary \n\r");
+        goto LL;
+    }
+    
+    Branch :printf("Please Enter your status \n (s) for single \n (m) married without kids \n (k) Married with kids \n (e) for exit  \n\r");
+    fflush(stdin);
+    scanf("%c",&status);
+    switch (status)
+    {
+    case 's':
+        printf(" Gross sallary = %.2f $ \n\r",BasicSalry);
+        break;
+    case 'm':
+        printf(" Gross sallary = %.2f $ \n\r",BasicSalry*101.0/100.0);
+        break;
+    case 'k':
+        printf(" Gross sallary = %.2f $ \n\r",BasicSalry*102.0/100.0);
+        break;
+     case 'e':
+        break;
+    default:
+        printf("Wrong input \n\r");
+        goto Branch;
+        break;
+    }
+}
+void ISPositiveorNegative(void)
+{
+    float number=0.0;
+    printf("Please Enter a number\n\r");
+    scanf("%f",&number);
+    switch (number>0)
+    {
+    case 1:
+        printf("%d is a positive a number\n\r",(int)number);
+        break;
+    case 0:
+        switch (number==0)
+        {
+        case 1:
+            printf("you entered Zaro neithr positive nor negative \n\r"); 
+            break;
+        case 0:
+            printf("%d is a negative a number\n\r",(int)number);
+            break;
+        default:
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+}
+void GetDay(void)
+{
+    int Day=0;
+    printf("what Day is today ? \n please enter a number from 1 to 7 \n\r");
+    scanf("%d",&Day);
+    switch (Day)
+    {
+    case 1:
+        printf("Todat is Saturday \n\r");
+        break;
+    case 2:
+        printf("Todat is Sunday \n\r");
+        break;
+     case 3:
+        printf("Todat is monday \n\r");
+        break;
+    case 4:
+        printf("Todat is tusday \n\r");
+        break;
+    case 5:
+        printf("Todat is wednesday \n\r");
+        break;
+    case 6:
+        printf("Todat is thursday \n\r");
+        break;
+    case 7:
+        printf("Todat is Friday \n\r");
+        break;   
+    default:
+        printf("wrong input \n\r");
+        break;
+    }
+}
