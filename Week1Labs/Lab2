@@ -1,0 +1,133 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define PI  3.14159265359
+static void CirculeCalclation();
+static void NumberManupliation();
+static void BitManupilation();
+static void Bitoperation();
+static void TerinaryoperatorTest();
+static void ODD_Even();
+void main(void)
+{
+    /******************************** Example 1 ****************************************************************************/
+    CirculeCalclation();
+    /******************************** Example 2 ****************************************************************************/
+    NumberManupliation();
+    /******************************** Example 3 ****************************************************************************/
+    BitManupilation();
+    /******************************** Example 4 ****************************************************************************/
+    Bitoperation();
+    /******************************** Example 5 ****************************************************************************/
+    TerinaryoperatorTest();
+    /******************************** Example 5 ****************************************************************************/
+    ODD_Even();
+    return;
+}
+void CirculeCalclation()
+{
+
+   /****************************************Calculating Area and Circumferance of a circule************************************************************/
+    float Radious;
+    float Area=0.0;
+    float Circumferance=0.0;
+    printf("Please Enter the radious of the circle \n\r");
+    scanf("%f",&Radious);
+    Area=PI*pow(Radious,2);
+    Circumferance=2*PI*Radious;
+    printf("The Area of The circule is : %f \n\r",Area);
+    printf("The Circumferance of The circule is : %f \n\r",Circumferance);
+}
+void NumberManupliation()
+{
+
+      /**********************************  calculating the Summation, subtraction, multiplication,remainder and division of two numbers ***************/
+    float number1=0.0;
+    float number2=0.0;
+    float sum=0.0;
+    float sub=0.0;
+    float Mul=0.0;
+    float div=0.0;
+    int mod=0.0;
+    printf("This part of code calculating the Summation, subtraction, multiplication,remainder and division of two numbers \n\r");
+    printf("Please Enter First Number \n\r");
+    scanf("%f",&number1);
+    fflush(stdin);
+    printf("Please Enter Second Number \n\r");
+    scanf("%f",&number2);
+    fflush(stdin);
+    sum=number1+number2;
+    sub=number1-number2;
+    Mul=number1*number2;
+    while (number2==0)
+    {
+        printf("Please enter a valid numer other than 0 \n\r");
+    }
+    div= number1/number2;
+    mod= (int)number1 % (int)number2;
+
+    printf("The summation of these two numbers is : %f \n\r",sum);
+    printf("The subtraction of these two numbers is : %f\n\r",sub);
+    printf("The multiplication of these two numbers is : %f\n\r",Mul);
+    printf("The division of these two numbers is : %f\n\r",div);
+    printf("The Remainder of these two numbers is : %d\n\r",mod);
+    
+
+}
+void BitManupilation()
+
+{
+
+    int x=5;
+	int y=2;
+	int z=0,k=0,L=0,M=0,N=0;
+	z=x&y;			// this should be 0		0000
+	k=x|y;			//this should be  7 	0111
+	L=x>>1;			// this should be 2   	0010
+	M=x^y;			// this shold be 7		0111
+	N=x<<2;			// this sold be 20     10100
+    printf("z= %d  , k= %d  ,L=%d  ,M=%d  , N=%d \n\r",z,k,L,M,N);
+}
+void Bitoperation()
+{
+    int var1=0;
+	int var2=0;
+	int var3=0;
+	printf("Please Enter First number \n\r");
+	scanf("%d",&var1);
+
+	printf("Please Enter second number \n\r");
+	scanf("%d",&var2);
+		
+	printf("Please Enter tird number \n\r");
+	scanf("%d",&var3);
+	var1|=(1<<0);
+	var2&=~(1<<1);
+	var3^=(1<<2);
+	printf("Seting first bit : %d\n\r",var1);
+	printf(" clearing second bit : %d\n\r",var2);
+	printf("toggling  third bit : %d\n\r",var3);
+}
+void TerinaryoperatorTest()
+{
+    /************************ Assignement 1 *************************************************************/
+	int number1=0;
+	int number2=0;
+	printf("Please Enter First number \n\r");
+	scanf("%d",&number1);
+
+	printf("Please Enter second number \n\r");
+	scanf("%d",&number2);
+	(number1==number2)?printf("Number1 = Number2 \n\r"):(number1>number2)?printf("the largest number is: %d  \n\r",number1):printf("the largest number is: %d  \n\r",number2);
+    
+}
+void ODD_Even()
+{
+    /************************ Assignement 2 *************************************************************/
+
+    int number=0;
+	printf("Please Enter First number \n\r");
+	scanf("%d",&number);
+	(number%2==0)?printf("Even \n\r"):printf("odd \n\r");
+}
