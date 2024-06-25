@@ -1,0 +1,114 @@
+/*
+ * main.c
+ *
+ *  Created on: ??‏/??‏/????
+ *      Author: Mohamed
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+static void Print_Datatypes();
+static void Scan_Datatypes();
+static void Scan_Number_PrintHex();
+static void Scan_Char_PrintASCII();
+void main(void )
+{
+	/************************************************************* Example 1 *************************************************/	
+	Print_Datatypes();
+	/************************************************************* Example 2 **********************************************/
+	Scan_Datatypes();
+	/************************************************************* Example 3 **********************************************/
+	Scan_Number_PrintHex();
+	/************************************************************* Example 4 **********************************************/
+	Scan_Char_PrintASCII();
+	return ;
+
+}
+void Print_Datatypes()
+{
+
+ /**************************************************** Printing all data types with its sizes**************************************/
+	char ch = 'a';													// 1 byte -128:127
+	unsigned char uch='A';											// 1byte 0:255
+	
+	short s=-10;													//2bytes -32768:32767
+	unsigned short us=10;											//2bytes 0:65535
+	
+	int i=-5;														// Machiene dependent ---> 4 bytes  -2^31 :2^31-1 		
+	unsigned int ui=5;												// Machiene dependent ---> 4 bytes  0 :2^32-1 	
+	
+	long l=-2000;													// 4 bytes  -2^31 :2^31-1 																
+	unsigned long ul=2000;											//4 bytes  0 :2^32-1			
+
+	float f=10.15;													// floating point 4 bytes
+	double d=20.156; 												// double 8 byte		
+	long double ld =51515.511456;									// long double 16 bytes	 
+	//long int li=5656553232;			
+	//printf("Long int li= %d , ...................size of li= %d \n\r", li , sizeof(li));
+	printf("signed ch= %c ,---and unsigned uch=  %c ,...... sizeof ch= %d, size of uch= %d\n\r",ch,uch,sizeof(ch),sizeof(uch));
+	printf("signed s= %d ,---and unsigned us=  %d ,...... sizeof s= %d, size of us= %d\n\r",s,us,sizeof(s),sizeof(us));
+	printf("signed i= %d ,---and unsigned ui=  %u ,...... sizeof i= %d, size of ui= %d\n\r",i,ui,sizeof(i),sizeof(ui));
+	printf("signed l= %ld ,---and unsigned ul=  %lu ,...... sizeof i= %d, size of ui= %d\n\r",l,ul,sizeof(l),sizeof(ul));
+	printf("float f= %f ,double d=  %lf ,long double  ld= %lf,-------- size of f= %d,size of d= %d,size of ld= %d\n\r",f,d,ld,sizeof(f),sizeof(d),sizeof(ld));
+}
+
+void Scan_Datatypes()
+{
+	/*************************************************************scaning all data types and print them******************/
+	char name[20];
+	char rank;
+	int grade;
+	float temp;
+	double pressure;
+	short humidity;
+	printf("Please Enter Your name \n\r");
+	scanf("%s",name);
+	fflush(stdin);
+
+	printf("Please Enter Your Rank \n\r");
+	scanf("%c",&rank);
+	fflush(stdin);
+
+
+	printf("Please Enter Your Grade \n\r");
+	scanf("%d",&grade);
+	fflush(stdin);
+	
+	printf("Please Enter Humidity \n\r");
+	scanf("%d",&humidity);
+	fflush(stdin);
+
+	printf("Please Enter Temperatur \n\r");
+	scanf("%f",&temp);
+	fflush(stdin);
+
+
+	printf("Please Enter pressure \n\r");
+	scanf("%lf",&pressure);
+	fflush(stdin);
+
+	printf("you name is : %s\n\r",name);
+	printf("you rank is : %C\n\r",rank);
+	printf("you grade is : %d\n\r",grade);
+	printf("humidity is : %d\n\r ",(humidity%100));
+	printf("Temperatur is : %f\n\r ",temp);
+	printf("pressure is : %lf\n\r ",pressure);
+}
+
+void Scan_Number_PrintHex()
+{
+	/**********************************************scaning a number and printing its octal and hex value******************/
+	int number=0;
+	printf("please enter a numer \n\r");
+	scanf("%d",&number);
+	printf("Number = %d......... hecx of number =0x%x ......... hecx of number =0x%X......... octal of numer=o%o \n\r",number,number,number,number);	
+}
+
+void Scan_Char_PrintASCII()
+{
+	 /**********************************************scaning a char and printing its value and asci code******************/
+	char ch=' ';
+	printf("please enter a char to print it as value and ASCII code  \n\r");
+	scanf("%c",&ch);
+	printf("char is %c....... ASCII value of this char in hex is  0x%x.......ASCII value of this char in decimal is %d  \n\r",ch,ch,ch);	
+}
