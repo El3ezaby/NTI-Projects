@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<stdint.h>
+#include<string.h>
+#include <stdbool.h>
+#include <conio.h>	
+#include <math.h>
+int rising_edge_counter(char signal);
+void Fullname(void);
+void Myrev(char * str);
+int countwords(char* str);
+int mystrlen(char*str);
+bool Mycomp(char *str1,char* str2);
+void Replacec(char* str,char find ,char rep);
+void lower(void);
+void upper(void);
+typedef  unsigned int  uint32 ;
+void main()
+{
+  
+  	system("cls");
+    /****************************Calculating rising edge pulses ***************************************/
+    // int arr[12] = {1,1,0,1,0,0,1,1,0,1,0,1};
+    // int rising_edges=0;
+    // for (int i = 0; i < 12; i++)
+    // {
+    //     rising_edges = rising_edge_counter(arr[i]);
+    // }
+    // printf("rising edge count = %d \n" , rising_edges);
+    /***************************************Full name*****************************************************/
+    // Fullname();
+    /***************************************Myrev*********************************************************/
+    // char  myname[20]= "Mohamed elazab";
+    // Myrev(myname);
+    // char*rev =strrev(myname);
+    // printf("%s",rev);
+    /*************************************count words*****************************************************/
+    // countwords("");
+    /************************************ Compare string *************************************************/
+    // if (Mycomp("Hellod","Hello")) 
+    // {
+    // printf("Both strings are equal \n");
+    // }
+    // else
+    // {
+    //     printf("strings are not equal \n");
+    // }
+    /************************************ Uper string case ************************************************/
+    // upper();
+    /************************************ lower string case ************************************************/
+    lower();
+}
+int rising_edge_counter(char signal)
+{
+    static char temp=1 ;
+    static int count=0;
+    if(signal>temp)
+    {
+        count++;
+    }  
+    temp=signal;   
+    return count;
+}
+void Fullname(void)
+{
+    char first[20];
+    char last [30];
+    printf("please Enter your first name\n");
+    // scanf("%s",first);
+    fgets(first,20,stdin);
+    Replacec(first,'\n','\0');
+    printf("please Enter your last name\n");
+    // scanf("%s",last);
+    fgets(last,20,stdin);
+   /// strcat(first,last);
+    printf(" your name is %s %s \n",first ,last);
+}
+void Myrev(char * str)
+{
+    char * ptr2str=str;
+    int counter=0;
+    while(*ptr2str != '\0' )
+    {
+        counter++;
+        ptr2str++;
+    }
+    ptr2str--;
+    char newstr[counter];
+    for(int i = 0; i < counter; i++)
+    {
+        newstr[i]=*ptr2str;
+        ptr2str--;
+    }
+    printf("%s\n",newstr);   
+}
+int countwords(char* str)
+{
+    char * ptr2str=str;
+    int count=1;
+    while(*ptr2str != '\0')
+    {
+        if (*ptr2str ==' ')
+        { 
+            count++;
+        }
+        ptr2str++;
+    }
+    printf("no of words is %d \n",count);
+}
+
+bool Mycomp(char *str1,char* str2)
+{
+    int len1=mystrlen(str1);
+    printf("Len1 = %d \n",len1);
+    int len2=mystrlen(str2);
+    printf("Len2 = %d \n",len2);
+    if (len1 != len2)
+    {
+        return false;
+    }
+    
+    while (*str1 !='\0'&& *str2!='\0')
+    {
+        if(*str1 != *str2)
+            return false;
+        str1++;
+        str2++;
+    }
+    return true;
+}
+int mystrlen(char*str)
+{
+    int len=0;
+    while(*str !='\0')
+    {
+        len++ ;
+        str++ ;
+    }
+    return len;
+}
+void Replacec(char* str,char find ,char rep)
+{
+    while(*str != '\0')
+    {
+        if(*str== find)
+        {
+            *str= rep; 
+        }
+        str++;
+    }
+    
+}
+
+void upper(void)
+{
+    char s[100];
+   int i;
+   printf("Enter a string :\n");
+   gets(s);
+
+   for (i = 0; s[i]!='\0'; i++)
+    {
+      if(s[i] >= 'a' && s[i] <= 'z')
+        {
+            s[i] = s[i] - 32;
+        }
+   }
+   printf("String in Upper Case = %s", s);
+}
+void lower(void)
+{
+    char s[100];
+    int i;
+    printf("Enter a string : \n");
+    gets(s);
+
+    for (i = 0; s[i]!='\0'; i++) 
+    {
+        if(s[i] >= 'A' && s[i] <= 'Z')
+        {
+            s[i] = s[i] + 32;
+        }
+    }
+    printf("String in Lower Case = %s\n", s);
+}
